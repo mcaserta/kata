@@ -14,7 +14,15 @@ public class ProjectEulerNumberOne {
      * @return the sum of all the multiples of 3 or 5 below 1000
      */
     public int getResult() {
-        return 0; // TODO: implement me
+        int result = 0;
+        
+        for (int i = 1; i < 1000; i++) {
+            if (i % 3 == 0 || i % 5 == 0) {
+                result += i;
+            }
+        }
+
+        return result;
     }
     
 }

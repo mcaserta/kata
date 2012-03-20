@@ -13,7 +13,19 @@ public class FizzBuzz {
      * @throws IllegalArgumentException if the number is not in the 1-100 range.
      */
     public String toFizzBuzzString(int number) {
-        return ""; // TODO: implement me
+        if (number < 1 || number > 100) {
+            throw new IllegalArgumentException("invalid input: number=" + number);
+        }
+        
+        if (number % 15 == 0) {
+            return "FizzBuzz";
+        } else if (number % 5 == 0) {
+            return "Buzz";
+        } else if (number % 3 == 0) {
+            return "Fizz";
+        } else {
+            return String.valueOf(number);
+        }
     }
 
 }
