@@ -1,4 +1,3 @@
-import java.security.SecureRandom;
 import java.util.Comparator;
 
 public class SoftwareVersionComparator implements Comparator<String> {
@@ -22,7 +21,33 @@ public class SoftwareVersionComparator implements Comparator<String> {
      */
     @Override
     public int compare(String version1, String version2) {
-        return 42; // TODO: implement me
+        final String[] version1Array = version1.split("\\.");
+        final String[] version2Array = version2.split("\\.");
+
+        int index = 0;
+
+        do {
+            int v1 = safeGet(version1Array, index);
+            int v2 = safeGet(version2Array, index);
+
+            if (v1 < v2) {
+                return -1;
+            }
+            if (v1 > v2) {
+                return 1;
+            }
+
+            index++;
+        } while (index < version1Array.length || index < version2Array.length);
+
+        return 0;
+    }
+
+    private int safeGet(String[] version, int index) {
+        if (index < version.length) {
+            return Integer.parseInt(version[index]);
+        }
+        return 0;
     }
 
 }
